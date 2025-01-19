@@ -13,7 +13,7 @@ export default {
 					DEFAULT:'#21D4B4',
   				'50': '#F4FDFA',
 				},
-  			black: '1C1B1B',
+  			black: '#1C1B1B',
   			grey: {
   				'50': '#F4F5FD',
   				'100': '#C0C0C0',
