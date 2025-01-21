@@ -1,3 +1,11 @@
+About App --
+1.Vite app 
+2.Shadcn integrated with many components located in respective files like input, button,etc and also light-dark toggle mode is integrated.
+3.file based routing is integrated using tanstack router
+
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

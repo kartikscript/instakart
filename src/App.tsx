@@ -3,7 +3,7 @@ import { ModeToggle } from './components/mode-toggle'
 import { Input } from './components/ui/input'
 import { Button } from './components/ui/button'
 import { useToast } from './hooks/use-toast'
-import CategoryTab from './components/CategoryTab'
+import CategoryTabItem from './components/CategoryTabItem'
 import { Baby, BookHeart, Heart, ShoppingBag, WashingMachine } from 'lucide-react'
 
 const tabItems = [
@@ -44,7 +44,7 @@ function App() {
       {
         tabItems.map((item,index) => {
           const isActiveId = activeTabId === item.id
-          return <CategoryTab handleTabCategory={handleTabCategory} isActive={isActiveId} id={item.id} key={index} title={item.title} icon={item.icon} />
+          return <CategoryTabItem handleTabCategory={handleTabCategory} isActive={isActiveId} id={item.id} key={index} title={item.title} icon={item.icon} />
         }
         )
       }
