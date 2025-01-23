@@ -1,3 +1,4 @@
+import MobileNav from '@/components/MobileNav'
 import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 
@@ -11,10 +12,12 @@ export const Route = createRootRoute({
         <Link to="/about" className="[&.active]:font-bold">
           About
         </Link>
-      </div>
-      <hr /> */}
+      </div> */}
+      {/* <hr /> */}
       <Outlet />
-      <TanStackRouterDevtools />
+      {/* <TanStackRouterDevtools /> */}
+      <MobileNav/>
+
     </>
   ),
 })

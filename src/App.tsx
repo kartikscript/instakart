@@ -28,7 +28,7 @@ function App() {
   }
   return (
     <div className='p-3 mx-auto min-h-screen text-center flex gap-2 flex-col items-center '>  
-    <ModeToggle />
+    <ModeToggle />  
     
     <Button className=''
        onClick={() => {
