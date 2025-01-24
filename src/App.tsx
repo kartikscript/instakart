@@ -39,7 +39,7 @@ function App() {
       <header className='p-3 space-y-3 dark:bg-dark-main-50 bg-main-50'>
         <h1 className='font-mono font-semibold text-2xl flex justify-between'>Instakart <ModeToggle/></h1>
         <div
-        className="flex px-3 items-center bg-white dark:bg-black rounded-md border border-main dark:border-dark-main "
+        className="flex px-3 py-2 items-center bg-white dark:bg-black rounded-md border border-main dark:border-dark-main "
         >
           <label htmlFor='search-main'><Search className="text-main" /></label>
           <Input
@@ -48,7 +48,7 @@ function App() {
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             onKeyDown={(e) => checkKeyChange(e)}
-            className="focus-visible:ring-0 focus-visible:outline-none border-none px-2"
+            className="focus-visible:ring-0 focus-visible:outline-none border-none px-2 py-0 shadow-none" 
           />
         </div>
         <div className='flex w-full gap-4 overflow-x-scroll overflow-y-hidden'>
