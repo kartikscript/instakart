@@ -5,6 +5,7 @@ import { Input } from './components/ui/input'
 // import { useToast } from './hooks/use-toast'
 import CategoryTabItem from './components/CategoryTabItem'
 import { Baby, BookHeart, Heart, Search, ShoppingBag, WashingMachine } from 'lucide-react'
+import FeaturedSection from './components/FeaturedSection'
 
 const tabItems = [
   { id:'1',icon: <ShoppingBag/>, title: 'All' },
@@ -36,10 +37,10 @@ function App() {
   }
   return (
     <div className=' min-h-screen dark:bg-black bg-white'> 
-      <header className='p-3 space-y-3 dark:bg-dark-main-50 bg-main-50'>
+      <header className='sticky top-0 left-0 p-3 space-y-4 dark:bg-dark-main-50 bg-main-50'>
         <h1 className='font-mono font-semibold text-2xl flex justify-between'>Instakart <ModeToggle/></h1>
         <div
-        className="flex px-3 py-2 items-center bg-white dark:bg-black rounded-md border border-main dark:border-dark-main "
+        className="flex px-3 py-2 items-center bg-white dark:bg-black rounded-md border-2 border-main dark:border-dark-main "
         >
           <label htmlFor='search-main'><Search className="text-main" /></label>
           <Input
@@ -74,9 +75,13 @@ function App() {
     >Click</Button>
     <Input placeholder='email' type='email'/> */}
    
-    <div className='h-screen '>
-
-    </div>
+      <div className='min-h-screen '>
+        <FeaturedSection label='Top Products'/>
+        <FeaturedSection label='Most Loved'/>
+        <FeaturedSection label='Specially For You'/>
+        <FeaturedSection label='Specially For me'/>
+        <FeaturedSection label='Specially For other'/>
+      </div>
     </div>
   )
 }
