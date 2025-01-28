@@ -6,6 +6,7 @@ import { Input } from './components/ui/input'
 import CategoryTabItem from './components/CategoryTabItem'
 import { Baby, BookHeart, Heart, Search, ShoppingBag, WashingMachine } from 'lucide-react'
 import FeaturedSection from './components/FeaturedSection'
+import { Link } from '@tanstack/react-router'
 
 const tabItems = [
   { id:'1',icon: <ShoppingBag/>, title: 'All' },
@@ -21,7 +22,6 @@ const tabItems = [
 
 function App() {
   const [activeTabId, setActiveTabId] = useState('1')
-  const [searchInput, setSearchInput] = useState('')
   // const { toast } = useToast()
 
   const handleTabCategory = (id:string) => {
@@ -29,30 +29,20 @@ function App() {
     setActiveTabId(id)
   }
 
-  const checkKeyChange = (e:React.KeyboardEvent<HTMLInputElement>) => {
-    if(e.key === 'Enter') {
-      console.log('Search results',searchInput)
-    } 
-    
-  }
   return (
     <div className=' min-h-screen dark:bg-black bg-white'> 
       <header className='sticky top-0 left-0 p-3 space-y-4 dark:bg-dark-main-50 bg-main-50'>
         <h1 className='font-mono font-semibold text-2xl flex justify-between'>Instakart <ModeToggle/></h1>
-        <div
+        <Link to='/search'
         className="flex px-3 py-2 items-center bg-white dark:bg-black rounded-md border-2 border-main dark:border-dark-main "
         >
-          <label htmlFor='search-main'><Search className="text-main" /></label>
+          <label><Search className="text-main" /></label>
           <Input
-            id="search-main"
             placeholder="Search Products..."
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            onKeyDown={(e) => checkKeyChange(e)}
             className="focus-visible:ring-0 focus-visible:outline-none border-none px-2 py-0 shadow-none" 
           />
-        </div>
-        <div className='flex w-full gap-4 overflow-x-scroll overflow-y-hidden'>
+        </Link>
+        <div className='flex w-full gap-4 overflow-x-scroll overflow-y-hidden remove-scrollbar'>
           {
             tabItems.map((item,index) => {
               const isActiveId = activeTabId === item.id
@@ -76,11 +66,11 @@ function App() {
     <Input placeholder='email' type='email'/> */}
    
       <div className='min-h-screen '>
-        <FeaturedSection label='Top Products'/>
-        <FeaturedSection label='Most Loved'/>
-        <FeaturedSection label='Specially For You'/>
-        <FeaturedSection label='Specially For me'/>
-        <FeaturedSection label='Specially For other'/>
+        <FeaturedSection category='beauty' label='Glow Essentials'/>
+        <FeaturedSection category='fragrances' label='Signature Scents'/>
+        <FeaturedSection category='furniture' label='Comfort & Class'/>
+        <FeaturedSection category='groceries' label='Daily Essentials'/>
+      
       </div>
     </div>
   )

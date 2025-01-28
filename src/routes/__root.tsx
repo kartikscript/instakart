@@ -1,23 +1,20 @@
 import MobileNav from '@/components/MobileNav'
-import { createRootRoute, Outlet } from '@tanstack/react-router'
+import { GlobalProvider } from '@/context/GlobalContext';
+import { createRootRoute, Outlet, useMatchRoute} from '@tanstack/react-router'
 // import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 
 export const Route = createRootRoute({
-  component: () => (
-    <>
-      {/* <div className="p-2 flex gap-2">
-        <Link to="/" className="[&.active]:font-bold">
-          Home
-        </Link>{' '}
-        <Link to="/about" className="[&.active]:font-bold">
-          About
-        </Link>
-      </div> */}
-      {/* <hr /> */}
-      <Outlet />
-      {/* <TanStackRouterDevtools /> */}
-      <MobileNav/>
+  component: () => {
+    const matchRoute = useMatchRoute();
+    const isSearchRoute = matchRoute({ to: '/search' });
+   return (<>
+      <GlobalProvider>
+       <Outlet/>
 
-    </>
-  ),
+      </GlobalProvider>
+      {/* <TanStackRouterDevtools /> */}
+      {!isSearchRoute && <MobileNav />}
+
+    </>)
+  },
 })

@@ -11,6 +11,7 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as SearchImport } from './routes/search'
 import { Route as CategoriesImport } from './routes/categories'
 import { Route as CartImport } from './routes/cart'
 import { Route as AccountImport } from './routes/account'
@@ -18,6 +19,12 @@ import { Route as IndexImport } from './routes/index'
 import { Route as ProductProductIdImport } from './routes/product/$productId'
 
 // Create/Update Routes
+
+const SearchRoute = SearchImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const CategoriesRoute = CategoriesImport.update({
   id: '/categories',
@@ -81,6 +88,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CategoriesImport
       parentRoute: typeof rootRoute
     }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchImport
+      parentRoute: typeof rootRoute
+    }
     '/product/$productId': {
       id: '/product/$productId'
       path: '/product/$productId'
@@ -98,6 +112,7 @@ export interface FileRoutesByFullPath {
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
   '/categories': typeof CategoriesRoute
+  '/search': typeof SearchRoute
   '/product/$productId': typeof ProductProductIdRoute
 }
 
@@ -106,6 +121,7 @@ export interface FileRoutesByTo {
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
   '/categories': typeof CategoriesRoute
+  '/search': typeof SearchRoute
   '/product/$productId': typeof ProductProductIdRoute
 }
 
@@ -115,20 +131,34 @@ export interface FileRoutesById {
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
   '/categories': typeof CategoriesRoute
+  '/search': typeof SearchRoute
   '/product/$productId': typeof ProductProductIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/account' | '/cart' | '/categories' | '/product/$productId'
+  fullPaths:
+    | '/'
+    | '/account'
+    | '/cart'
+    | '/categories'
+    | '/search'
+    | '/product/$productId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/account' | '/cart' | '/categories' | '/product/$productId'
+  to:
+    | '/'
+    | '/account'
+    | '/cart'
+    | '/categories'
+    | '/search'
+    | '/product/$productId'
   id:
     | '__root__'
     | '/'
     | '/account'
     | '/cart'
     | '/categories'
+    | '/search'
     | '/product/$productId'
   fileRoutesById: FileRoutesById
 }
@@ -138,6 +168,7 @@ export interface RootRouteChildren {
   AccountRoute: typeof AccountRoute
   CartRoute: typeof CartRoute
   CategoriesRoute: typeof CategoriesRoute
+  SearchRoute: typeof SearchRoute
   ProductProductIdRoute: typeof ProductProductIdRoute
 }
 
@@ -146,6 +177,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccountRoute: AccountRoute,
   CartRoute: CartRoute,
   CategoriesRoute: CategoriesRoute,
+  SearchRoute: SearchRoute,
   ProductProductIdRoute: ProductProductIdRoute,
 }
 
@@ -163,6 +195,7 @@ export const routeTree = rootRoute
         "/account",
         "/cart",
         "/categories",
+        "/search",
         "/product/$productId"
       ]
     },
@@ -177,6 +210,9 @@ export const routeTree = rootRoute
     },
     "/categories": {
       "filePath": "categories.tsx"
+    },
+    "/search": {
+      "filePath": "search.tsx"
     },
     "/product/$productId": {
       "filePath": "product/$productId.tsx"
