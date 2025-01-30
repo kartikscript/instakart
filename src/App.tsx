@@ -7,6 +7,8 @@ import CategoryTabItem from './components/CategoryTabItem'
 import { Baby, BookHeart, Heart, Search, ShoppingBag, WashingMachine } from 'lucide-react'
 import FeaturedSection from './components/FeaturedSection'
 import { Link } from '@tanstack/react-router'
+import { useGlobalContext } from './context/GlobalContext'
+import { Product } from './lib/types'
 
 const tabItems = [
   { id:'1',icon: <ShoppingBag/>, title: 'All' },
@@ -22,8 +24,31 @@ const tabItems = [
 
 function App() {
   const [activeTabId, setActiveTabId] = useState('1')
+  const {data}:{data:Product[]} = useGlobalContext()
   // const { toast } = useToast()
 
+const catWiseData: {
+  beautyProd: Product[];
+  fragrancesProd: Product[];
+  furnitureProd: Product[];
+  groceriesProd: Product[];
+} = {
+  beautyProd: [],
+  fragrancesProd: [],
+  furnitureProd: [],
+  groceriesProd: [],
+};
+  data?.forEach((prod)=>{
+     if(prod.category === 'beauty') {
+       catWiseData.beautyProd.push(prod)
+      }else if(prod.category === 'fragrances'){
+        catWiseData.fragrancesProd.push(prod)
+      }else if(prod.category === 'furniture'){
+        catWiseData.furnitureProd.push(prod)
+      }else if(prod.category === 'groceries'){
+        catWiseData.groceriesProd.push(prod)
+      }
+  })
   const handleTabCategory = (id:string) => {
 
     setActiveTabId(id)
@@ -31,10 +56,10 @@ function App() {
 
   return (
     <div className=' min-h-screen dark:bg-black bg-white'> 
-      <header className='sticky top-0 left-0 p-3 space-y-4 dark:bg-dark-main-50 bg-main-50'>
-        <h1 className='font-mono font-semibold text-2xl flex justify-between'>Instakart <ModeToggle/></h1>
+      <header className='sticky top-0 left-0 p-3 space-y-3 dark:bg-dark-main-50 bg-main-50'>
+        <h1 className='font-mono tracking-widest uppercase font-semibold text-2xl flex justify-between'>Instakart <ModeToggle/></h1>
         <Link to='/search'
-        className="flex px-3 py-2 items-center bg-white dark:bg-black rounded-md border-2 border-main dark:border-dark-main "
+        className="flex px-2 py-1 items-center bg-white dark:bg-black rounded-md border-2 border-main dark:border-dark-main "
         >
           <label><Search className="text-main" /></label>
           <Input
@@ -52,24 +77,12 @@ function App() {
           }
         </div>
       </header> 
-    {/* <ModeToggle />  
-    
-    <Button className=''
-       onClick={() => {
-        toast({
-          title: "Scheduled: Catch up",
-          description: "Friday, February 10, 2023 at 5:57 PM",
-          duration: 5000,
-        })
-      }}
-    >Click</Button>
-    <Input placeholder='email' type='email'/> */}
    
       <div className='min-h-screen '>
-        <FeaturedSection category='beauty' label='Glow Essentials'/>
-        <FeaturedSection category='fragrances' label='Signature Scents'/>
-        <FeaturedSection category='furniture' label='Comfort & Class'/>
-        <FeaturedSection category='groceries' label='Daily Essentials'/>
+        <FeaturedSection data={catWiseData.beautyProd} label='Glow Essentials'/>
+        <FeaturedSection data={catWiseData.fragrancesProd} label='Signature Scents'/>
+        <FeaturedSection data={catWiseData.furnitureProd} label='Comfort & Class'/>
+        <FeaturedSection data={catWiseData.groceriesProd} label='Daily Essentials'/>
       
       </div>
     </div>

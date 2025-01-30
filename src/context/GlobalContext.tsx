@@ -1,8 +1,13 @@
+import { Product } from '@/lib/types';
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 // Define the shape of your context state
+type CartItem = Product & { quantity: number };
+
 interface GlobalState {
-  data:any
+  data:Product[] 
+  cartItems:CartItem[] 
+  setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
 }
 
 //1 Create the context with a default value
@@ -11,8 +16,8 @@ const GlobalContext = createContext<GlobalState | undefined>(undefined);
 //2 Create a provider component
 export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Define your global state and functions
-  const [data, setData] = useState(null)
-
+  const [data, setData] = useState([])
+  const [cartItems, setCartItems] = useState<CartItem[]>([])
   useEffect(() => {
     // Fetch data from an API
     const cacheData = localStorage.getItem('allProducts')
@@ -22,14 +27,15 @@ export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       fetch('https://dummyjson.com/products')
         .then((response) => response.json())
         .then((json) =>{
-          setData(json)
-          localStorage.setItem('allProducts',JSON.stringify(json))
+          const data = json.products
+          setData(data)
+          localStorage.setItem('allProducts',JSON.stringify(data))
         });
     }
   }, []);
   // Provide the state and functions to children components
   return (
-    <GlobalContext.Provider value={{ data}}>
+    <GlobalContext.Provider value={{ data, cartItems,setCartItems }}>
       {children}
     </GlobalContext.Provider>
   );
