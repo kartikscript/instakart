@@ -12,23 +12,18 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as SearchImport } from './routes/search'
-import { Route as CategoriesImport } from './routes/categories'
 import { Route as CartImport } from './routes/cart'
 import { Route as AccountImport } from './routes/account'
 import { Route as IndexImport } from './routes/index'
+import { Route as CategoriesIndexImport } from './routes/categories/index'
 import { Route as ProductProductIdImport } from './routes/product/$productId'
+import { Route as CategoriesCategoryImport } from './routes/categories/$category'
 
 // Create/Update Routes
 
 const SearchRoute = SearchImport.update({
   id: '/search',
   path: '/search',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const CategoriesRoute = CategoriesImport.update({
-  id: '/categories',
-  path: '/categories',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -50,9 +45,21 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const CategoriesIndexRoute = CategoriesIndexImport.update({
+  id: '/categories/',
+  path: '/categories/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const ProductProductIdRoute = ProductProductIdImport.update({
   id: '/product/$productId',
   path: '/product/$productId',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CategoriesCategoryRoute = CategoriesCategoryImport.update({
+  id: '/categories/$category',
+  path: '/categories/$category',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -81,13 +88,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CartImport
       parentRoute: typeof rootRoute
     }
-    '/categories': {
-      id: '/categories'
-      path: '/categories'
-      fullPath: '/categories'
-      preLoaderRoute: typeof CategoriesImport
-      parentRoute: typeof rootRoute
-    }
     '/search': {
       id: '/search'
       path: '/search'
@@ -95,11 +95,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SearchImport
       parentRoute: typeof rootRoute
     }
+    '/categories/$category': {
+      id: '/categories/$category'
+      path: '/categories/$category'
+      fullPath: '/categories/$category'
+      preLoaderRoute: typeof CategoriesCategoryImport
+      parentRoute: typeof rootRoute
+    }
     '/product/$productId': {
       id: '/product/$productId'
       path: '/product/$productId'
       fullPath: '/product/$productId'
       preLoaderRoute: typeof ProductProductIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/categories/': {
+      id: '/categories/'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof CategoriesIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -111,18 +125,20 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
-  '/categories': typeof CategoriesRoute
   '/search': typeof SearchRoute
+  '/categories/$category': typeof CategoriesCategoryRoute
   '/product/$productId': typeof ProductProductIdRoute
+  '/categories': typeof CategoriesIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
-  '/categories': typeof CategoriesRoute
   '/search': typeof SearchRoute
+  '/categories/$category': typeof CategoriesCategoryRoute
   '/product/$productId': typeof ProductProductIdRoute
+  '/categories': typeof CategoriesIndexRoute
 }
 
 export interface FileRoutesById {
@@ -130,9 +146,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
-  '/categories': typeof CategoriesRoute
   '/search': typeof SearchRoute
+  '/categories/$category': typeof CategoriesCategoryRoute
   '/product/$productId': typeof ProductProductIdRoute
+  '/categories/': typeof CategoriesIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -141,25 +158,28 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/cart'
-    | '/categories'
     | '/search'
+    | '/categories/$category'
     | '/product/$productId'
+    | '/categories'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/account'
     | '/cart'
-    | '/categories'
     | '/search'
+    | '/categories/$category'
     | '/product/$productId'
+    | '/categories'
   id:
     | '__root__'
     | '/'
     | '/account'
     | '/cart'
-    | '/categories'
     | '/search'
+    | '/categories/$category'
     | '/product/$productId'
+    | '/categories/'
   fileRoutesById: FileRoutesById
 }
 
@@ -167,18 +187,20 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRoute
   CartRoute: typeof CartRoute
-  CategoriesRoute: typeof CategoriesRoute
   SearchRoute: typeof SearchRoute
+  CategoriesCategoryRoute: typeof CategoriesCategoryRoute
   ProductProductIdRoute: typeof ProductProductIdRoute
+  CategoriesIndexRoute: typeof CategoriesIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRoute,
   CartRoute: CartRoute,
-  CategoriesRoute: CategoriesRoute,
   SearchRoute: SearchRoute,
+  CategoriesCategoryRoute: CategoriesCategoryRoute,
   ProductProductIdRoute: ProductProductIdRoute,
+  CategoriesIndexRoute: CategoriesIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -194,9 +216,10 @@ export const routeTree = rootRoute
         "/",
         "/account",
         "/cart",
-        "/categories",
         "/search",
-        "/product/$productId"
+        "/categories/$category",
+        "/product/$productId",
+        "/categories/"
       ]
     },
     "/": {
@@ -208,14 +231,17 @@ export const routeTree = rootRoute
     "/cart": {
       "filePath": "cart.tsx"
     },
-    "/categories": {
-      "filePath": "categories.tsx"
-    },
     "/search": {
       "filePath": "search.tsx"
     },
+    "/categories/$category": {
+      "filePath": "categories/$category.tsx"
+    },
     "/product/$productId": {
       "filePath": "product/$productId.tsx"
+    },
+    "/categories/": {
+      "filePath": "categories/index.tsx"
     }
   }
 }

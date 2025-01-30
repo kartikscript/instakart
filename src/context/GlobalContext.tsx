@@ -24,7 +24,7 @@ export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     if(cacheData){
       setData(JSON.parse(cacheData))
     }else{
-      fetch('https://dummyjson.com/products')
+      fetch('https://dummyjson.com/products?limit=50')
         .then((response) => response.json())
         .then((json) =>{
           const data = json.products
