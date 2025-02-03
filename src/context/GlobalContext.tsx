@@ -18,20 +18,29 @@ export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   // Define your global state and functions
   const [data, setData] = useState([])
   const [cartItems, setCartItems] = useState<CartItem[]>([])
-  useEffect(() => {
-    // Fetch data from an API
-    const cacheData = localStorage.getItem('allProducts')
-    if(cacheData){
-      setData(JSON.parse(cacheData))
-    }else{
-      fetch('https://dummyjson.com/products?limit=50')
-        .then((response) => response.json())
-        .then((json) =>{
-          const data = json.products
-          setData(data)
-          localStorage.setItem('allProducts',JSON.stringify(data))
-        });
+  
+  const fetchData = async () => {
+    try {
+      const cacheData = (localStorage || sessionStorage)?.getItem('allProducts')
+      if(cacheData){
+        setData(JSON.parse(cacheData))
+      }else{
+        fetch('https://dummyjson.com/products?limit=50')
+          .then((response) => response.json())
+          .then((json) =>{
+            const data = json.products
+            setData(data); 
+            (localStorage || sessionStorage)?.setItem('allProducts',JSON.stringify(data))
+          });
+      } 
+      
+    } catch (error) {
+      console.log('Something went wrong in fetching data',error)
     }
+  }
+
+  useEffect(() => {
+    fetchData()
   }, []);
   // Provide the state and functions to children components
   return (
