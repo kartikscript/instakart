@@ -77,7 +77,16 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+			keyframes:{
+				moving:{
+          '0%':{transform:'translate(0%,0%)'},
+          '100%':{transform:'translate(-100%,0%)'},
+        }
+			},
+			animation:{
+				'hor-move':"moving 25s infinite linear"
+			}
   	}
   },
   plugins: [require("tailwindcss-animate")],

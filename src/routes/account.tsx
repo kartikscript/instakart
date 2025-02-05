@@ -5,5 +5,10 @@ export const Route = createFileRoute('/account')({
 })
 
 function RouteComponent() {
-  return <div>Hello "/account"!</div>
+  return (
+  <div>
+    scc
+  </div>
+
+)
 }

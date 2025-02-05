@@ -21,7 +21,6 @@ const ProductCard = ({data,viewAsCartProd}:{data:Product,viewAsCartProd ?: boole
       return prev?.map(item => item.id === id ? {...item,quantity:item.quantity - 1} :item ).filter(item => item.quantity>0)
     })
   }
-  console.log(quantity)
   const {toast} = useToast()
   const actualPrice = price/(1 - (discountPercentage/100))
   return (

@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as SearchImport } from './routes/search'
+import { Route as LoginImport } from './routes/login'
 import { Route as CartImport } from './routes/cart'
 import { Route as AccountImport } from './routes/account'
 import { Route as IndexImport } from './routes/index'
@@ -24,6 +25,12 @@ import { Route as CategoriesCategoryImport } from './routes/categories/$category
 const SearchRoute = SearchImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LoginRoute = LoginImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -88,6 +95,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CartImport
       parentRoute: typeof rootRoute
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
     '/search': {
       id: '/search'
       path: '/search'
@@ -125,6 +139,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
+  '/login': typeof LoginRoute
   '/search': typeof SearchRoute
   '/categories/$category': typeof CategoriesCategoryRoute
   '/product/$productId': typeof ProductProductIdRoute
@@ -135,6 +150,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
+  '/login': typeof LoginRoute
   '/search': typeof SearchRoute
   '/categories/$category': typeof CategoriesCategoryRoute
   '/product/$productId': typeof ProductProductIdRoute
@@ -146,6 +162,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/cart': typeof CartRoute
+  '/login': typeof LoginRoute
   '/search': typeof SearchRoute
   '/categories/$category': typeof CategoriesCategoryRoute
   '/product/$productId': typeof ProductProductIdRoute
@@ -158,6 +175,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/cart'
+    | '/login'
     | '/search'
     | '/categories/$category'
     | '/product/$productId'
@@ -167,6 +185,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/cart'
+    | '/login'
     | '/search'
     | '/categories/$category'
     | '/product/$productId'
@@ -176,6 +195,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/cart'
+    | '/login'
     | '/search'
     | '/categories/$category'
     | '/product/$productId'
@@ -187,6 +207,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRoute
   CartRoute: typeof CartRoute
+  LoginRoute: typeof LoginRoute
   SearchRoute: typeof SearchRoute
   CategoriesCategoryRoute: typeof CategoriesCategoryRoute
   ProductProductIdRoute: typeof ProductProductIdRoute
@@ -197,6 +218,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRoute,
   CartRoute: CartRoute,
+  LoginRoute: LoginRoute,
   SearchRoute: SearchRoute,
   CategoriesCategoryRoute: CategoriesCategoryRoute,
   ProductProductIdRoute: ProductProductIdRoute,
@@ -216,6 +238,7 @@ export const routeTree = rootRoute
         "/",
         "/account",
         "/cart",
+        "/login",
         "/search",
         "/categories/$category",
         "/product/$productId",
@@ -230,6 +253,9 @@ export const routeTree = rootRoute
     },
     "/cart": {
       "filePath": "cart.tsx"
+    },
+    "/login": {
+      "filePath": "login.tsx"
     },
     "/search": {
       "filePath": "search.tsx"
