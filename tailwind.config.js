@@ -82,10 +82,15 @@ export default {
 				moving:{
           '0%':{transform:'translate(0%,0%)'},
           '100%':{transform:'translate(-100%,0%)'},
-        }
+        },
+				"caret-blink": {
+          "0%,70%,100%": { opacity: "1" },
+          "20%,50%": { opacity: "0" },
+        },
 			},
 			animation:{
-				'hor-move':"moving 25s infinite linear"
+				'hor-move':"moving 15s infinite linear",
+				"caret-blink": "caret-blink 1.25s ease-out infinite",
 			}
   	}
   },

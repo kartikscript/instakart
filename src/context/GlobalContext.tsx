@@ -21,7 +21,7 @@ export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   
   const fetchData = async () => {
     try {
-      const cacheData = (localStorage || sessionStorage)?.getItem('allProducts')
+      const cacheData = typeof window !== 'undefined' ? window.localStorage.getItem('allProducts') : null
       if(cacheData){
         setData(JSON.parse(cacheData))
       }else{
@@ -30,7 +30,7 @@ export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) 
           .then((json) =>{
             const data = json.products
             setData(data); 
-            (localStorage || sessionStorage)?.setItem('allProducts',JSON.stringify(data))
+            localStorage?.setItem('allProducts',JSON.stringify(data))
           });
       } 
       

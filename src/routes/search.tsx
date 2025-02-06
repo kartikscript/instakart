@@ -30,6 +30,7 @@ function RouteComponent() {
           <Input
             autoFocus
             id="search-main"
+            inputMode='search'
             placeholder="Search Products..."
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
