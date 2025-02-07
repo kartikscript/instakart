@@ -38,7 +38,7 @@ const catWiseData: {
   furnitureProd: [],
   groceriesProd: [],
 };
-  data?.forEach((prod)=>{
+ typeof data === 'object' && data.forEach((prod)=>{
      if(prod.category === 'beauty') {
        catWiseData.beautyProd.push(prod)
       }else if(prod.category === 'fragrances'){

@@ -25,13 +25,11 @@ export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       if(cacheData){
         setData(JSON.parse(cacheData))
       }else{
-        fetch('https://dummyjson.com/products?limit=50')
-          .then((response) => response.json())
-          .then((json) =>{
-            const data = json.products
-            setData(data); 
-            localStorage?.setItem('allProducts',JSON.stringify(data))
-          });
+        const res = await fetch('https://dummyjson.com/products?limit=50')
+        const json = await res.json()
+        const data = json.products
+        setData(data);
+        localStorage?.setItem('allProducts',JSON.stringify(data))
       } 
       
     } catch (error) {
