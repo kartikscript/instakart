@@ -39,7 +39,7 @@ const Verify = ({number,setShowVerificationPage}:{number:string,setShowVerificat
       <div className='space-y-6 font-medium mt-10'>
             <div className="space-y-1">
               <label>Enter verification code</label>
-              <p className="flex items-center gap-2 font-normal tracking-wide text-[13px] text-grey-150"><span>Sent to +91 {number}</span> <SquarePen className="size-4" onClick={()=>setShowVerificationPage(false)}/></p>
+              <p className="flex items-center gap-2 font-normal tracking-wide text-[13px] text-grey-150"><span>Sent to +91 {number}</span> <SquarePen className="size-4 text-main" onClick={()=>setShowVerificationPage(false)}/></p>
             </div>
             <InputOTP disabled={otpValue.length === 6} value={otpValue} onChange={value =>handleOtpChange(value)} maxLength={6} autoFocus inputMode="numeric"  className="w-full ring-red-300">
               <InputOTPGroup className="flex justify-between w-full  *:text-xl *:size-12 *:rounded-md">

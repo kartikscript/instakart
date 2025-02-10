@@ -7,8 +7,8 @@ import CategoryTabItem from './components/CategoryTabItem'
 import { Baby, BookHeart, Heart, Search, ShoppingBag, WashingMachine } from 'lucide-react'
 import FeaturedSection from './components/FeaturedSection'
 import { Link } from '@tanstack/react-router'
-import { useGlobalContext } from './context/GlobalContext'
 import { Product } from './lib/types'
+import { useGlobalContext } from './context/GlobalContext'
 
 const tabItems = [
   { id:'1',icon: <ShoppingBag/>, title: 'All' },
@@ -22,10 +22,10 @@ const tabItems = [
 ]
 
 
-function App() {
+ function App() {
   const [activeTabId, setActiveTabId] = useState('1')
-  const {data}:{data:Product[]} = useGlobalContext()
-  // const { toast } = useToast()
+ // const { toast } = useToast()
+  const {data} = useGlobalContext()
 
 const catWiseData: {
   beautyProd: Product[];
@@ -38,7 +38,8 @@ const catWiseData: {
   furnitureProd: [],
   groceriesProd: [],
 };
- typeof data === 'object' && data.forEach((prod)=>{
+
+data?.forEach((prod)=>{
      if(prod.category === 'beauty') {
        catWiseData.beautyProd.push(prod)
       }else if(prod.category === 'fragrances'){
@@ -49,12 +50,14 @@ const catWiseData: {
         catWiseData.groceriesProd.push(prod)
       }
   })
-  const handleTabCategory = (id:string) => {
 
-    setActiveTabId(id)
-  }
+const handleTabCategory = (id:string) => {
 
-  return (
+  setActiveTabId(id)
+}
+
+console.log(data)
+return (
     <div className=' min-h-screen dark:bg-black bg-white'> 
       <header className='sticky top-0 left-0 p-3 space-y-3 dark:bg-dark-main-50 bg-main-50'>
         <h1 className='font-mono tracking-widest uppercase font-semibold text-2xl flex justify-between'>Instakart <ModeToggle/></h1>

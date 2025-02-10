@@ -16,7 +16,7 @@ const GlobalContext = createContext<GlobalState | undefined>(undefined);
 //2 Create a provider component
 export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Define your global state and functions
-  const [data, setData] = useState([])
+  const [data, setData] = useState<Product[]>([])
   const [cartItems, setCartItems] = useState<CartItem[]>([])
   
   const fetchData = async () => {
