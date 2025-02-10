@@ -26,9 +26,9 @@ export const Route = createRootRoute({
       <GlobalProvider>
        <Outlet/>
 
+      {!isSearchRoute && !isLoginRoute && <MobileNav />}
       </GlobalProvider>
       {/* <TanStackRouterDevtools /> */}
-      {!isSearchRoute && !isLoginRoute && <MobileNav />}
 
     </>)
   },

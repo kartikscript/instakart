@@ -56,15 +56,14 @@ const handleTabCategory = (id:string) => {
   setActiveTabId(id)
 }
 
-console.log(data)
 return (
     <div className=' min-h-screen dark:bg-black bg-white'> 
-      <header className='sticky top-0 left-0 p-3 space-y-3 dark:bg-dark-main-50 bg-main-50'>
-        <h1 className='font-mono tracking-widest uppercase font-semibold text-2xl flex justify-between'>Instakart <ModeToggle/></h1>
+      <header className='sticky top-0 left-0 p-3 space-y-2 dark:bg-dark-main-50 bg-main-50'>
+        <h1 className='font-mono tracking-widest uppercase font-semibold text-xl flex justify-between'>Instakart <ModeToggle/></h1>
         <Link to='/search'
-        className="flex px-2 py-1 items-center bg-white dark:bg-black rounded-md border-2 border-main dark:border-dark-main "
+        className="flex px-2 items-center bg-white dark:bg-black rounded-md border-2 border-main dark:border-dark-main "
         >
-          <label><Search className="text-main" /></label>
+          <label><Search className="text-main size-5" /></label>
           <Input
             placeholder="Search Products..."
             className="focus-visible:ring-0 focus-visible:outline-none border-none px-2 py-0 shadow-none" 

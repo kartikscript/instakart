@@ -3,7 +3,7 @@ import React from 'react'
 const CategoryTabItem = ({title,icon,id,isActive,handleTabCategory}:{handleTabCategory:(id:string)=>void,id:string,isActive:boolean,title:string,icon:React.ReactNode}) => {
   return (
     <div onClick={()=>handleTabCategory(id)} id={id} className='relative p-2'>
-      <div className={`flex flex-col  cursor-pointer items-center text-sm *:stroke-[2px]  ${isActive ?'font-[500] text-black dark:text-white ':' text-grey-150 dark:text-dark-grey-150 font-[400] '} transition-all`}>
+      <div className={`flex flex-col  cursor-pointer items-center text-sm *:size-5 *:stroke-[2px]  ${isActive ?'font-[500] text-black dark:text-white ':' text-grey-150 dark:text-dark-grey-150 font-[400] '} transition-all`}>
          {icon}
          {title}
       </div>

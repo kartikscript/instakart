@@ -20,10 +20,10 @@ function RouteComponent() {
     }
   }
   return (
-    <div className=''>
-      <header className="p-3 pt-5 sticky top-0 left-0 flex items-center gap-2 bg-black">
+    <div className='h-screen flex flex-col overflow-y-auto'>
+      <header className="p-3 pt-5 sticky top-0 left-0 flex items-center gap-2 bg-main-50 dark:bg-dark-main-50">
         <Link to='/'><ArrowLeft className='size-8 stroke-1'/></Link>
-        <div className=' w-full flex px-3 py-2 items-center bg-white dark:bg-black rounded-md border-2 border-main dark:border-dark-main'>
+        <div className=' w-full flex p-2 items-center bg-white dark:bg-black rounded-md border-2 border-main dark:border-dark-main'>
           <label htmlFor="search-main">
             <Search className="text-main" />
           </label>
@@ -39,10 +39,13 @@ function RouteComponent() {
           />
         </div>
       </header>
-      <section className='space-y-4 p-3'>
+      <section className='flex-1 space-y-4 p-3'>
         {
           prodData[0] ?prodData?.map(item =>(<ProductCard key={item.id} data={item} viewAsCartProd/>)) :
-          <p className='text-center '>Searches will appear here</p>
+          <div className='flex flex-col gap-4 items-center justify-center h-full tracking-wider'>
+            <Search className='size-20 text-black/30 dark:text-neutral-500'/>
+            <p className='text-center '>Searches will appear here</p>
+          </div>
         }
       </section>
     </div>
