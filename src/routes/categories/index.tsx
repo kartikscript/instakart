@@ -26,7 +26,7 @@ function RouteComponent() {
   }
   return (
     <div className="relative grid grid-cols-[auto_1fr] h-[92vh] *:overflow-y-scroll *:remove-scrollbar">
-      <header className='col-span-full sticky top-0 left-0 w-full px-4 py-1 flex items-center justify-between bg-main-50 dark:bg-dark-main-50'>
+      <header className='col-span-full sticky top-0 left-0 w-full px-4 py-3 flex items-center justify-between bg-main-50 dark:bg-dark-main-50'>
         <div className='inline-flex gap-2 font-medium'>
           <Menu/>
           <h3>All Categories</h3>
@@ -36,7 +36,7 @@ function RouteComponent() {
           <Link to='/cart'><ShoppingCart/></Link>
         </div>
       </header>
-      <section className='w-20 pl-1 space-y-3  bg-black/5 dark:bg-neutral-900 '>
+      <section className='w-20 pl-1 space-y-3  bg-main-50 dark:bg-dark-main-50 '>
         {allCategories?.map((item, i) => {
           const isActive = item === activeItem
           return (
@@ -49,10 +49,10 @@ function RouteComponent() {
                 isActive &&(
                   <>
                     <div className='absolute top-0 right-0 -translate-y-full size-3 bg-white dark:bg-black'>
-                      <div className='size-full bg-black/5 dark:bg-neutral-900 rounded-br-md'/>
+                      <div className='size-full bg-main-50 dark:bg-dark-main-50 rounded-br-md'/>
                     </div>
                     <div className='absolute bottom-0 right-0 translate-y-full size-3 bg-white dark:bg-black'>
-                      <div className='size-full bg-black/5 dark:bg-neutral-900 rounded-tr-md'/>
+                      <div className='size-full bg-main-50 dark:bg-dark-main-50 rounded-tr-md'/>
                     </div>
                   </>
                 )

@@ -21,13 +21,13 @@ function RouteComponent() {
     <>
     
     <div className='h-screen flex flex-col gap-6 bg-main dark:bg-dark-main'>
-      <header className=' p-6 space-y-4 text-white dark:text-black text-center'>
-        <Link to='/' className='flex items-center justify-center text-lg bg-main-50 dark:bg-dark-main-50 dark:text-dark-main text-main rounded-full p-3 size-1 w-fit  '>&larr;</Link>
-        <h1 className='text-4xl font-bold '>Instakart</h1>
-        <h2 className='font-medium tracking-wide'>From Cart to Door in No Time</h2>
+      <header className=' p-6 space-y-4 text-white  text-center'>
+        <Link to='/' className='flex items-center justify-center bg-main-50 dark:bg-dark-main-50 dark:text-white text-black rounded-full p-3 size-1 w-fit  '>&larr;</Link>
+        <h1 className='text-4xl font-bold tracking-wider '>Instakart</h1>
+        <h2 className='font-medium tracking-wide text-lg opacity-95'>From Cart to Door in No Time</h2>
       </header>
       <MovingText texts={['Instant Delivery','Real-time Tracking','Secure Payments','Scheduled Delivery','Exclusive Deals']}/>
-      <MovingText texts={['Fresh Fruits','Dairy Products','Beverages','Snacks & Chips','Personal Care','Rice & Grains']} isReverse={true} />
+      <MovingText texts={['Fresh Fruits','Dairy Products','Beverages','Snacks & Chips','Personal Care','Rice & Grains']} isReverse/>
       {
         showVerificationPage 
         ? 
@@ -50,7 +50,7 @@ function RouteComponent() {
             </div>
           </div>
           <div className='w-full space-y-4'>
-            <Button disabled={number.length !==10} onClick={handleSubmit} type='button' className='py-5 disabled:bg-main/90 bg-main w-full active:bg-main-50 dark:disabled:bg-dark-main/90 dark:bg-dark-main transition-all '>Continue</Button>
+            <Button disabled={number.length !==10} onClick={handleSubmit} type='button' className='py-5 disabled:bg-main/90 bg-main text-white w-full active:bg-main-50 dark:disabled:bg-dark-main/90 dark:bg-dark-main transition-all '>Continue</Button>
             <p className='text-xs text-grey-100 dark:text-dark-grey-100'>By continuing, you agree to our Terms of service & Privacy policy</p>
           </div>
 

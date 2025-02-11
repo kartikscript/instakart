@@ -36,11 +36,11 @@ function RouteComponent() {
               }
 
               <Billing billingDetail={billingDetail}/>
-              <div className='flex justify-between p-3 rounded-lg bg-blue-100 text-blue-700 dark:bg-blue-600 dark:text-blue-100 font-medium text-sm'>
+              <div className='flex justify-between p-3 rounded-lg bg-blue-100 text-blue-700 dark:bg-blue-700 dark:text-blue-100 font-medium text-sm'>
                 <h2>Your total savings</h2>
                 <p>${(billingDetail.actualPrice - billingDetail.discountPrice).toFixed(2)}</p>
               </div>
-              <Button className='sticky bottom-0 bg-green-600 dark:bg-green-500 text-white w-full py-6 text-lg'>Buy Now</Button>
+              <Button className='sticky bottom-0 bg-green-600 text-white w-full py-6 text-lg'>Buy Now</Button>
             </div>
           </section>
         ):(
