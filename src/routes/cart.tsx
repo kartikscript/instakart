@@ -1,5 +1,4 @@
 import Billing from '@/components/Billing'
-import CartStatusLine from '@/components/CartStatusLine'
 import ProductCard from '@/components/ProductCard'
 import { Button } from '@/components/ui/button'
 import { useGlobalContext } from '@/context/GlobalContext'
@@ -20,10 +19,12 @@ function RouteComponent() {
   }
   return (
     <div className='h-[92vh] bg-white dark:bg-black relative'>
+      <div className='w-full p-4 text-lg font-medium  bg-main-50 dark:bg-dark-main-50 '>
+        <h2>My Cart</h2>
+      </div>
       {
         cartItems.length !== 0 ? (
           <section className='overflow-y-scroll h-full'>
-            <CartStatusLine/>
             <div className='p-4 space-y-5'>
               {
                 cartItems.map(item =>{

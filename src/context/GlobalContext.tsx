@@ -21,9 +21,15 @@ export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   
   const fetchData = async () => {
     try {
-      const cacheData = typeof window !== 'undefined' ? window.localStorage.getItem('allProducts') : null
+      let cacheData:string | null = null
+      let cacheCartItems:string | null = null
+      if(typeof window !== 'undefined'){
+         cacheData = window.localStorage.getItem('allProducts')
+         cacheCartItems = window.localStorage.getItem('cartItems')
+      }
       if(cacheData){
         setData(JSON.parse(cacheData))
+        setCartItems(JSON.parse(cacheCartItems || '[]'))
       }else{
         const res = await fetch('https://dummyjson.com/products?limit=50')
         const json = await res.json()
@@ -40,6 +46,11 @@ export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   useEffect(() => {
     fetchData()
   }, []);
+
+  useEffect(() => {
+    (cartItems.length !== 0) && localStorage?.setItem('cartItems',JSON.stringify(cartItems))
+  }, [cartItems])
+  
   // Provide the state and functions to children components
   return (
     <GlobalContext.Provider value={{ data, cartItems,setCartItems }}>
