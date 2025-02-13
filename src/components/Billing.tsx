@@ -32,7 +32,7 @@ const Billing = ({billingDetail}:{billingDetail:BillingProps}) => {
           </div>
           <h3>$10</h3>
         </div>
-        <div className='font-medium text-sm border-t border-black/10 dark:border-white/10'>
+        <div className='font-medium text-sm pt-2 border-t border-black/10 dark:border-white/10'>
           <h2>Grand Total</h2>
           <h3>$140</h3>
         </div>

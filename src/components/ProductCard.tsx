@@ -26,7 +26,7 @@ const ProductCard = ({data,viewAsCartProd}:{data:Product,viewAsCartProd ?: boole
 
   // console.log(data.category,data.tags)
   return (
-    <div className={`min-w-32 w-32 sm:min-w-36 sm:w-36 gap-2 grid ${viewAsCartProd ? 'grid-cols-[auto_auto_1fr] grid-rows-[auto_auto_auto]' : 'grid-cols-[auto_auto]' } place-items-center justify-items-start text-xs font-semibold p-2 bg-grey-50 dark:bg-dark-grey-50 shadow-md shadow-grey-100/60 dark:shadow-dark-grey-100/20 rounded-md border border-grey-100 dark:border-dark-grey-100 `}>
+    <div className={` gap-2 sm:gap-x-6 grid ${viewAsCartProd ? 'grid-cols-[auto_auto_1fr] grid-rows-[auto_auto_auto]' : 'grid-cols-[auto_auto] min-w-32 w-32 sm:min-w-36 sm:w-36' } place-items-center justify-items-start text-xs font-semibold p-2 bg-grey-50 dark:bg-dark-grey-50 shadow-md shadow-grey-100/60 dark:shadow-dark-grey-100/20 rounded-md border border-grey-100 dark:border-dark-grey-100 `}>
         <img
         src={thumbnail}
         alt="product"

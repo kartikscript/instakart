@@ -62,11 +62,11 @@ return (
       <header className='sticky top-0 left-0 grid grid-cols-[auto_1fr_auto] place-items-center justify-items-start gap-y-2 sm:gap-y-8 sm:gap-x-10 p-3 sm:p-5 dark:bg-dark-main-50 bg-main-50 '>
         <h1 className='col-span-2 sm:col-span-1 font-mono tracking-widest uppercase font-semibold text-xl sm:text-2xl '>Instakart</h1>
         <div className=' col-span-1 sm:col-start-3 flex items-center gap-6'>
-          <span className='hidden relative sm:flex items-center font-semibold text-white bg-main dark:bg-dark-main rounded-md px-4 py-2 gap-1'>
+          <Link to='/cart' className='hidden relative sm:flex items-center font-semibold text-white bg-main dark:bg-dark-main rounded-md px-4 py-2 gap-1'>
            <ShoppingCart/>
            <h3>Cart</h3>
            {cartItems.length !== 0 && <span className='absolute top-0 right-0  translate-x-[35%] -translate-y-[35%] rounded-sm font-medium py-[2px] px-2 flex justify-center items-center text-[10px] bg-green text-white bg-main border border-main-50 dark:border-dark-main-50 dark:bg-dark-main'>{cartItems.length}</span>}
-          </span>
+          </Link>
           <Button variant={'outline'} className='dark:bg-black hidden sm:block' >Sign In</Button>
           <ModeToggle/>
         </div>

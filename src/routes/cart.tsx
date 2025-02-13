@@ -3,7 +3,7 @@ import ProductCard from '@/components/ProductCard'
 import { Button } from '@/components/ui/button'
 import { useGlobalContext } from '@/context/GlobalContext'
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { ShoppingCart } from 'lucide-react'
+import { ArrowLeft, ShoppingCart } from 'lucide-react'
 
 export const Route = createFileRoute('/cart')({
   component: RouteComponent,
@@ -18,13 +18,14 @@ function RouteComponent() {
     discountPrice:0,
   }
   return (
-    <div className='h-[92vh] bg-white dark:bg-black relative'>
-      <div className='w-full p-4 text-lg font-medium  bg-main-50 dark:bg-dark-main-50 '>
+    <div className='h-[92vh] sm:h-full flex flex-col bg-white dark:bg-black'>
+      <div className='w-full sm:sticky sm:top-0 flex items-center gap-5 z-10 p-4 text-xl font-medium  bg-main-50 dark:bg-dark-main-50 '>
+        <Link to='/'><ArrowLeft className=''/> </Link> 
         <h2>My Cart</h2>
       </div>
       {
         cartItems.length !== 0 ? (
-          <section className='overflow-y-scroll h-full'>
+          <section className='relative sm:mx-auto flex-1 overflow-y-auto '>
             <div className='p-4 space-y-5'>
               {
                 cartItems.map(item =>{
@@ -41,7 +42,7 @@ function RouteComponent() {
                 <h2>Your total savings</h2>
                 <p>${(billingDetail.actualPrice - billingDetail.discountPrice).toFixed(2)}</p>
               </div>
-              <Button className='sticky bottom-0 bg-green-600 text-white w-full py-6 text-lg'>Buy Now</Button>
+              <Button className='sticky bottom-0 bg-green-600 hover:bg-green-500 text-white w-full py-6 text-lg sm:text-base'>Buy Now</Button>
             </div>
           </section>
         ):(
