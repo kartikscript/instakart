@@ -79,7 +79,7 @@ return (
             className="focus-visible:ring-0 focus-visible:outline-none border-none px-2 py-0 shadow-none" 
           />
         </Link>
-        <div className='col-span-full flex w-full sm:justify-center gap-4 sm:gap-8 overflow-x-scroll overflow-y-hidden remove-scrollbar'>
+        <div className='col-span-full flex w-full md:justify-center gap-4 sm:gap-8 overflow-x-scroll overflow-y-hidden remove-scrollbar'>
           {
             tabItems.map((item,index) => {
               const isActiveId = activeTabId === item.id

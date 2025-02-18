@@ -18,7 +18,7 @@ function RouteComponent() {
     discountPrice:0,
   }
   return (
-    <div className='h-[92vh] sm:h-full flex flex-col bg-white dark:bg-black'>
+    <div className='h-[92vh] sm:h-screen flex flex-col bg-white dark:bg-black'>
       <div className='w-full sm:sticky sm:top-0 flex items-center gap-5 z-10 p-4 text-xl font-medium  bg-main-50 dark:bg-dark-main-50 '>
         <Link to='/'><ArrowLeft className=''/> </Link> 
         <h2>My Cart</h2>

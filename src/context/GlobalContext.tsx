@@ -48,7 +48,7 @@ export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   }, []);
 
   useEffect(() => {
-    (cartItems.length !== 0) && localStorage?.setItem('cartItems',JSON.stringify(cartItems))
+    localStorage?.setItem('cartItems',JSON.stringify(cartItems || []))
   }, [cartItems])
   
   // Provide the state and functions to children components
